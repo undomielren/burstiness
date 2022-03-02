@@ -32,13 +32,15 @@ rogue_path = f"/myhome2/users/munshi/dwarf_volumes/rogue.cosmo25cmb.4096g5HbwK1B
 
 # Loading halo
 print("Loading halo of interest...")
-s = pb.load(rogue_path) #load marvel_path 
+s = pb.load(rogue_path) #choose marvel_path to load
 s.physical_units()
 h = s.halos()
+
+#select one of the following halos:
 #halos = [1,2,3,5,6,7,10,11,13,14,24] #select for Cpt Marvel
 #halos = [1,2,3,4,5,8,9,10,11,12,17,36,64] #select for Elektra
 #halos = [1,2,3,4,5,6,7,8,10,11,12,14,15,22,23,31,37,44,48,55,118] #select for Storm
-halos = [1,3,7,8,10,11,12,15,16,17,28,31,37,58,116] #select for Rogue
+#halos = [1,3,7,8,10,11,12,15,16,17,28,31,37,58,116] #select for Rogue
 
 ###--------------------------------------sntiming.py//-------------------------------------------###
 
@@ -112,7 +114,7 @@ for hnum in halos:
     burstiness,t_burst = get_burstiness(snr,tbins,50)
     new_burstiness = np.nan_to_num(burstiness,nan=-1)
     Data[str(hnum)] = {}
-    halo_dir_path = "/myhome2/users/azartash/sncalc/rogue_halos" #pathway to where you want output files saved to
+    halo_dir_path = "/myhome2/users/azartash/sncalc/rogue_halos" #change pathway to where you want pickle file saved
     os.chdir(halo_dir_path)
     Data[str(hnum)]['SNR'] = snr
     Data[str(hnum)]['SN_bins'] = tbins
