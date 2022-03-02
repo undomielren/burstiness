@@ -19,16 +19,12 @@ storm_halo_dir_path = "/myhome2/users/azartash/sncalc/storm_halos/"
 rogue_halo_dir_path = "/myhome2/users/azartash/sncalc/rogue_halos/"
 
 cptmarvel_gradients = np.loadtxt(sncalc + 'gradients_cptmarvel.txt')
-#cm_data = np.array(cptmarvel_gradients)
 
 elektra_gradients = np.loadtxt(sncalc + 'gradients_elektra.txt')
-#e_data = np.array(elektra_gradients)
 
 storm_gradients = np.loadtxt(sncalc + 'gradients_storm.txt')
-#s_data = np.array(storm_gradients)
 
 rogue_gradients = np.loadtxt(sncalc + 'gradients_rogue.txt')
-#r_data = np.array(rogue_gradients)
 
 cm_data = pickle.load(open(cptm_halo_dir_path + 'cpt_marvel_burstiness.pickle', 'rb'))
 cm_Data = pickle.load(open(cptm_halo_dir_path +'cpt_marvel_avg_burstiness.pickle', 'rb'))
@@ -47,6 +43,7 @@ elektra_halos = [1,2,3,4,5,9,10,11,12,17,36]
 storm_halos = [1,2,3,4,5,6,7,8,10,11,12,14,15,23,31,44]
 rogue_halos = [1,3,7,8,10,11,12,15,16,17,28,31,37]
 
+###---Cpt Marvel---###
 cm_avg_burstiness , cm_avg_active_burstiness = [],[]
 for h in ['1','2','3','5','6','7','10','11','13']:
     cm_avg_burstiness.append(np.mean(cm_data[h]['Burstiness']))
@@ -59,6 +56,7 @@ for h in ['1','2','3','5','6','7','10','11','13']:
     new_burstiness = burstiness[active]
     cm_avg_active_burstiness.append(np.mean(new_burstiness))
 
+###---Elektra---###
 e_avg_burstiness , e_avg_active_burstiness = [],[]
 for h in ['1','2','3','4','5','9','10','11','12','17','36']:
     e_avg_burstiness.append(np.mean(e_data[h]['Burstiness']))
@@ -71,6 +69,7 @@ for h in ['1','2','3','4','5','9','10','11','12','17','36']:
     new_burstiness = burstiness[active]
     e_avg_active_burstiness.append(np.mean(new_burstiness))
 
+###---Storm---###
 s_avg_burstiness , s_avg_active_burstiness = [],[]
 for h in ['1','2','3','4','5','6','7','8','10','11','12','14','15','23','31','44']:
     s_avg_burstiness.append(np.mean(s_data[h]['Burstiness']))
@@ -83,6 +82,7 @@ for h in ['1','2','3','4','5','6','7','8','10','11','12','14','15','23','31','44
     new_burstiness = burstiness[active]
     s_avg_active_burstiness.append(np.mean(new_burstiness))
 
+###---Rogue---###
 r_avg_burstiness , r_avg_active_burstiness = [],[]
 for h in ['1','3','7','8','10','11','12','15','16','17','28','31','37']:
     r_avg_burstiness.append(np.mean(r_data[h]['Burstiness']))
@@ -102,16 +102,14 @@ print("Creating plots...")
 rc('font',**{'family':'serif','serif':['Palatino']})
 rc('text', usetex=True)
 fig, ax1 = plt.subplots()
-c = cptmarvel_gradients
-t = cm_avg_active_burstiness
-im = ax1.scatter(cptmarvel_gradients,cm_avg_active_burstiness, c=t, cmap='twilight_shifted')
-ax1.set_ylabel('Mean Active Burstiness')
-#ax1.set_ylabel('Mean Burstiness')
-fig.suptitle('Cpt. Marvel')
-#ax1.set_xlim([-10, 2])
+c = cptmarvel_gradients        #change to gradient you want to plot
+t = cm_avg_active_burstiness   #change to SIM you want to plot-- mean burstiness or mean active burstiness
+im = ax1.scatter(cptmarvel_gradients,cm_avg_active_burstiness, c=t, cmap='twilight_shifted')     #change x,y 
+ax1.set_ylabel('Mean Active Burstiness')    #change title for Mean or Mean Active
+fig.suptitle('Cpt. Marvel')    #change to match SIM
 fig.colorbar(im, ax=ax1)
 ax1.set_xlabel(r'Age Gradients')
-plt.savefig('avg_active_burstiness_agegradients_cptmarvel.jpg')
+plt.savefig('avg_active_burstiness_agegradients_cptmarvel.jpg')     #change file name
 plt.show()
 
 
