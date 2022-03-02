@@ -9,3 +9,5 @@ Load the desired Marvel path and match the halo list.
 mean_burstiness_plots.py will calculate the mean burstiness and mean active burstiness for all halos in all Marvel SIMs and plot against 
 stellar mass, virial mass, or log (stellar/virial). The default will plot data for all SIMs. To plot each SIM individually, uncomment
 "avg_burstiness , stellar_mass, virial_mass, avg_active_burstiness = [],[],[],[]" under each SIM. 
+
+radial_gradient_burstiness_plots.py will plot mean burstiness or mean active burstiness for the halos in each Marvel SIM against age gradients that are loaded from txt file.
