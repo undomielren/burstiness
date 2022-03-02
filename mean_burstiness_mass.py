@@ -35,12 +35,14 @@ print("Loading halo of interest...")
 s = pb.load(rogue_path) #load marvel_path 
 s.physical_units()
 h = s.halos()
+
+###--- Select from following halos:---###
 #halos = [1,2,3,5,6,7,10,11,13,14,24] #cpt marvel
 #halos = [1,2,3,4,5,8,9,10,11,12,17,36,64] #elektra
 #halos = [1,2,3,4,5,6,7,8,10,11,12,14,15,22,23,31,37,44,48,55,118] #storm
-halos = [1,3,7,8,10,11,12,15,16,17,28,31,37,58,116] #rogue
+#halos = [1,3,7,8,10,11,12,15,16,17,28,31,37,58,116] #rogue
 
-halo_dir_path = "/myhome2/users/azartash/sncalc/rogue_halos" #pathway to output files//where figures will be saved
+halo_dir_path = "/myhome2/users/azartash/sncalc/rogue_halos" # change pathway to where you want the output file saved
 os.chdir(halo_dir_path)
  
 
